@@ -1,0 +1,21 @@
+{
+  "name": "razmik/yii2-widget-datetime",
+  "description": "Date/Time Picker widget for Yii2 framework",
+  "type": "yii2-extension",
+  "keywords": ["yii2","extension","datetime picker","bootstrap","widget"],
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+        "name": "Ilia Rozinsky"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0",
+    "php" : ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+        "razmik\\datetime\\": "src/"
+    }
+  }
+}
