@@ -114,6 +114,9 @@ class DateTimeWidget extends InputWidget
         $this->registerJs();
     }
 
+    /**
+     *
+     */
     protected function registerJs()
     {
         DateTimeAsset::register($this->getView());
@@ -156,11 +159,27 @@ class DateTimeWidget extends InputWidget
     protected function renderInput()
     {
         if ($this->hasModel()) {
-            $content = Html::activeTextInput($this->model, $this->attribute, $this->options);
+            $content = $this->getActiveText();
         } else {
-            $content = Html::textInput($this->name, $this->value, $this->options);
+            $content = $this->getInputText();
         }
         return $content;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getActiveText()
+    {
+        return Html::activeTextInput($this->model, $this->attribute, $this->options);
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getInputText()
+    {
+        return Html::textInput($this->name, $this->value, $this->options);
     }
 
     /**
@@ -179,7 +198,7 @@ class DateTimeWidget extends InputWidget
         if ($this->inputAddonContent) {
             $content[] = $this->inputAddonContent;
         } else {
-            $content[] = Html::tag('span', '', ['class' => 'glyphicon glyphicon-calendar']);
+            $content[] = self::iconSpan();
         }
         $content[] = Html::endTag('span');
 
@@ -192,5 +211,14 @@ class DateTimeWidget extends InputWidget
     protected function getPhpMomentMappings()
     {
         return array_merge($this->defaultPhpMomentMapping, $this->phpMomentMapping);
+    }
+
+    /**
+     * Icon
+     * @return mixed
+     */
+    public static function iconSpan()
+    {
+        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-calendar']);
     }
 }
