@@ -158,6 +158,7 @@ class DateTimeWidget extends InputWidget
      */
     protected function renderInput()
     {
+        
         if ($this->hasModel()) {
             $content = $this->getActiveText();
         } else {
